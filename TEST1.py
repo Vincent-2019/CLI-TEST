@@ -9,7 +9,7 @@ def main():
     Toolkit.pi_register_custom_action("OCRToExcel", OCRToExcelAction())
 
     # 启动 MaaPiCli
-    Toolkit.pi_run_cli("C:/MaaXXX/resource", "C:/MaaXXX/cache", False)
+    Toolkit.pi_run_cli(r"C:/MaaXXX/resource", r"C:/MaaXXX/cache", False)
 
 class OCRToExcelAction(CustomAction):
     def run(
