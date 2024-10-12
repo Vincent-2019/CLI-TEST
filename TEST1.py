@@ -9,7 +9,7 @@ def main():
     Toolkit.pi_register_custom_action("OCRToExcel", OCRToExcelAction())
 
     # 启动 MaaPiCli
-    Toolkit.pi_run_cli("C:/MaaXXX/resource", "C:/MaaXXX/cache", False)
+    Toolkit.pi_run_cli(r"C:/MaaXXX/resource", r"C:/MaaXXX/cache", False)
 
 class OCRToExcelAction(CustomAction):
     def run(
@@ -22,8 +22,8 @@ class OCRToExcelAction(CustomAction):
         image = context.tasker.controller.cached_image
 
         # OCR ON
-        reco_detail = co    ntext.run_recognition(
-            "OCRTask", image, {"OCRTask": {"recognition": "OCR", "expected": ""}}
+        reco_detail = context.run_recognition(
+            "OCRTask", image=context.tasker.controller.post_screencap().wait().get(), pipeline_override={"OCRTask": {"recognition": "OCR"}}  #Need to set roi
         )
 
         # 檢查識別結果
